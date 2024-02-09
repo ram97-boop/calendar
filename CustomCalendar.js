@@ -129,6 +129,8 @@ template.innerHTML = `
 `;
 
 class CustomCalendar extends HTMLElement {
+    monthOnDisplay;
+
     constructor() {
         super();
         this.monthStrings = [
@@ -147,24 +149,33 @@ class CustomCalendar extends HTMLElement {
         ];
         this.attachShadow({ mode: "open" });
         this.shadowRoot.append(template.content.cloneNode(true));
-        this.today = new Date();
-        this.monthOnDisplay = new Date(this.today);
-        this.printMonthAndYear();
+        this.printMonthAndYear(new Date());
         this.printDates();
     }
 
     connectedCallback() {
     }
 
-    getMonthAndYearToday() {
-        return `${this.monthStrings[
-            this.monthOnDisplay.getMonth()
-        ][0]} ${this.monthOnDisplay.getFullYear()}`;
+    updateFebruaryNrOfDays(date) {
+        if (date.getMonth() === 1) {
+            const febLastDay = new Date(date);
+            febLastDay.setMonth(2);
+            febLastDay.setDate(0);
+            this.monthStrings[1][1] = febLastDay.getDate();
+        }
     }
 
-    printMonthAndYear() {
+    getMonthAndYearToday(date) {
+        this.monthOnDisplay = new Date(date);
+        this.updateFebruaryNrOfDays(date);
+        return `${this.monthStrings[
+            date.getMonth()
+        ][0]} ${date.getFullYear()}`;
+    }
+
+    printMonthAndYear(date) {
         const p = this.shadowRoot.getElementById("month-and-year");
-        p.textContent = this.getMonthAndYearToday();
+        p.textContent = this.getMonthAndYearToday(date);
     }
 
     getThisMonthFirstDay() {
