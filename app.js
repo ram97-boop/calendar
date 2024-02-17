@@ -32,7 +32,8 @@ function getMonthAndYearToday(today) {
 
 function getThisMonthFirstDay() {
     monthOnDisplay.setDate(1);
-    return monthOnDisplay.getDay() - 1; // Make monday have index 0.
+    // Make monday have index 0, and avoid -1 for dates starting on a Sunday.
+    return (monthOnDisplay.getDay() - 1 + 7) % 7;
 }
 
 function incrementMonth(date) {
@@ -116,11 +117,11 @@ printDates();
 makeButtonsChangeMonth();
 
 module.exports = {
+    monthStrings,
     getMonthAndYearToday,
     getThisMonthFirstDay,
     incrementMonth,
     decrementMonth,
     updateFebruaryNrOfDays,
-    monthStrings,
     getYearMonthString
 }

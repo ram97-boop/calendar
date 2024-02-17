@@ -88,3 +88,23 @@ test("get 'YYYY-MM' format from Date object", () => {
 
     expect(actual).toEqual(expected);
 });
+
+test("get correct 0-indexed day for various start dates", () => {
+    const dates = [
+        new Date("2024-03-02"),
+        new Date("2024-04-02"),
+        new Date("2024-05-02"),
+        new Date("2026-02-02")
+    ];
+
+    const actual = [];
+    const expected = [4, 0, 2, 6];
+
+    for (date of dates) {
+        app.getMonthAndYearToday(date);
+
+        actual.push(app.getThisMonthFirstDay());
+    }
+
+    expect(actual).toEqual(expected);
+})
