@@ -8,10 +8,14 @@ body {
 
 .container {
     width: 400px;
-    height: 200px;
+    /* height: 200px; */
     border: 1px solid black;
     display: grid;
     grid-template-rows: 1fr 7fr;
+}
+
+.container > p {
+    text-align: center;
 }
 
 .dates {
@@ -19,7 +23,18 @@ body {
     grid-template-rows: 1fr 6fr;
 }
 
-.days {
+.days-of-week {
     display: flex;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
+}
+
+.days-of-month {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.days-of-week p,
+.days-of-month p {
+    width: 14.28%;
+    text-align: center;
 }
