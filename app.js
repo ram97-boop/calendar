@@ -37,12 +37,21 @@ function printWhitespaceDates(daysContainer) {
     }
 }
 
-// function printMonthAndYear() {
-//     const container = document.getElementById("calendar-container");
-//     container.firstElementChild.textContent = getMonthAndYearToday();
-// }
+function printDates() {
+    const daysContainer = document.getElementById("days-of-month");
+    const nrOfDays = monthStrings[today.getMonth()][1];
 
-// printMonthAndYear();
+    printWhitespaceDates(daysContainer);
+
+    for (let i = 1; i <= nrOfDays; ++i) {
+        let date = document.createElement("p");
+        date.textContent = `${i}`;
+        daysContainer.appendChild(date);
+    }
+}
+
+printMonthAndYear();
+printDates();
 
 module.exports = {
     getMonthAndYearToday,
