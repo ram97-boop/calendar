@@ -12,18 +12,29 @@ const monthStrings = [
     ["November", 30],
     ["December", 31]
 ];
+const today = new Date(Date.now());
 
 function getMonthAndYearToday() {
-    const today = new Date(Date.now());
-
     return `${monthStrings[today.getMonth()][0]} ${today.getFullYear()}`;
 }
 
 function getThisMonthFirstDay() {
-    const today = new Date(Date.now());
-
     today.setDate(1);
-    return today.getDay();
+    return today.getDay() - 1; // Make monday have index 0.
+}
+
+function printMonthAndYear() {
+    const container = document.getElementById("calendar-container");
+    container.firstElementChild.textContent = getMonthAndYearToday();
+}
+
+function printWhitespaceDates(daysContainer) {
+    const whitespaces = getThisMonthFirstDay();
+
+    for (let i = 0; i < whitespaces; ++i) {
+        let emptyP = document.createElement("p");
+        daysContainer.appendChild(emptyP);
+    }
 }
 
 // function printMonthAndYear() {
