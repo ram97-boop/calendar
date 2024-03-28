@@ -13,10 +13,10 @@ const monthStrings = [
     "December"
 ];
 
-function getMonthToday() {
+function getMonthAndYearToday() {
     const today = new Date(Date.now());
 
-    return monthStrings[today.getMonth()];
+    return `${monthStrings[today.getMonth()]} ${today.getFullYear()}`;
 }
 
 function getThisMonthFirstDay() {
@@ -27,6 +27,6 @@ function getThisMonthFirstDay() {
 }
 
 module.exports = {
-    getMonthToday,
+    getMonthAndYearToday,
     getThisMonthFirstDay
 }

@@ -3,8 +3,8 @@ const app = require("../app");
 test("returns today's month", () => {
     jest.useFakeTimers().setSystemTime(new Date("2024-03-01"));
 
-    const actual = app.getMonthToday();
-    const expected = "Mars";
+    const actual = app.getMonthAndYearToday();
+    const expected = "Mars 2024";
 
     expect(actual).toBe(expected);
 });
