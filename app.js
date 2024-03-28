@@ -19,6 +19,14 @@ function getMonthToday() {
     return monthStrings[today.getMonth()];
 }
 
+function getThisMonthFirstDay() {
+    const today = new Date(Date.now());
+
+    today.setDate(1);
+    return today.getDay();
+}
+
 module.exports = {
-    getMonthToday
+    getMonthToday,
+    getThisMonthFirstDay
 }
