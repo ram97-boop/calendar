@@ -26,6 +26,13 @@ function getThisMonthFirstDay() {
     return today.getDay();
 }
 
+function printMonthAndYear() {
+    const container = document.getElementById("calendar-container");
+    container.firstElementChild.textContent = getMonthAndYearToday();
+}
+
+printMonthAndYear();
+
 module.exports = {
     getMonthAndYearToday,
     getThisMonthFirstDay

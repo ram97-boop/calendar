@@ -6,7 +6,7 @@ body {
     font-family: sans-serif;
 }
 
-.container {
+#calendar-container {
     width: 400px;
     /* height: 200px; */
     border: 1px solid black;
@@ -14,7 +14,7 @@ body {
     grid-template-rows: 1fr 7fr;
 }
 
-.container > p {
+#calendar-container > p {
     text-align: center;
 }
 
