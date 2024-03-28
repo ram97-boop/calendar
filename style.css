@@ -18,23 +18,23 @@ body {
     text-align: center;
 }
 
-.dates {
+#dates {
     display: grid;
     grid-template-rows: 1fr 6fr;
 }
 
-.days-of-week {
+#days-of-week {
     display: flex;
     /* justify-content: space-evenly; */
 }
 
-.days-of-month {
+#days-of-month {
     display: flex;
     flex-wrap: wrap;
 }
 
-.days-of-week p,
-.days-of-month p {
+#days-of-week p,
+#days-of-month p {
     width: 14.28%;
     text-align: center;
 }
