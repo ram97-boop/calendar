@@ -20,6 +20,5 @@ function getMonthToday() {
 }
 
 module.exports = {
-    monthStrings,
     getMonthToday
 }
