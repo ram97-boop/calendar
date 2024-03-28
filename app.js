@@ -28,25 +28,25 @@ function printMonthAndYear() {
     container.firstElementChild.textContent = getMonthAndYearToday();
 }
 
-function printWhitespaceDates(daysContainer) {
+function printWhitespaceDates(datesContainer) {
     const whitespaces = getThisMonthFirstDay();
 
     for (let i = 0; i < whitespaces; ++i) {
         let emptyP = document.createElement("p");
-        daysContainer.appendChild(emptyP);
+        datesContainer.appendChild(emptyP);
     }
 }
 
 function printDates() {
-    const daysContainer = document.getElementById("days-of-month");
+    const datesContainer = document.getElementById("days-of-month");
     const nrOfDays = monthStrings[today.getMonth()][1];
 
-    printWhitespaceDates(daysContainer);
+    printWhitespaceDates(datesContainer);
 
     for (let i = 1; i <= nrOfDays; ++i) {
         let date = document.createElement("p");
         date.textContent = `${i}`;
-        daysContainer.appendChild(date);
+        datesContainer.appendChild(date);
     }
 }
 
