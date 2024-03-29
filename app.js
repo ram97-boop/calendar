@@ -13,7 +13,7 @@ const monthStrings = [
     ["December", 31]
 ];
 const today = new Date(Date.now());
-let monthOnDisplay = today;
+let monthOnDisplay = new Date(today);
 
 function getMonthAndYearToday() {
     return `${monthStrings[monthOnDisplay.getMonth()][0]} ${monthOnDisplay.getFullYear()}`;
