@@ -14,7 +14,7 @@ body {
     grid-template-rows: 1fr 7fr;
 }
 
-#calendar-container > p {
+#month-and-year {
     text-align: center;
 }
 
