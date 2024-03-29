@@ -13,14 +13,15 @@ const monthStrings = [
     ["December", 31]
 ];
 const today = new Date(Date.now());
+let monthOnDisplay = today;
 
 function getMonthAndYearToday() {
-    return `${monthStrings[today.getMonth()][0]} ${today.getFullYear()}`;
+    return `${monthStrings[monthOnDisplay.getMonth()][0]} ${monthOnDisplay.getFullYear()}`;
 }
 
 function getThisMonthFirstDay() {
-    today.setDate(1);
-    return today.getDay() - 1; // Make monday have index 0.
+    monthOnDisplay.setDate(1);
+    return monthOnDisplay.getDay() - 1; // Make monday have index 0.
 }
 
 function printMonthAndYear() {
@@ -39,7 +40,7 @@ function printWhitespaceDates(datesContainer) {
 
 function printDates() {
     const datesContainer = document.getElementById("days-of-month");
-    const nrOfDays = monthStrings[today.getMonth()][1];
+    const nrOfDays = monthStrings[monthOnDisplay.getMonth()][1];
 
     printWhitespaceDates(datesContainer);
 
