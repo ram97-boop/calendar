@@ -35,10 +35,10 @@ function decrementMonth(date) {
     }
 }
 
-// function printMonthAndYear() {
-//     const container = document.getElementById("calendar-container");
-//     container.firstElementChild.textContent = getMonthAndYearToday();
-// }
+function printMonthAndYear() {
+    const p = document.getElementById("month-and-year");
+    p.textContent = getMonthAndYearToday();
+}
 
 // function printWhitespaceDates(datesContainer) {
 //     const whitespaces = getThisMonthFirstDay();
