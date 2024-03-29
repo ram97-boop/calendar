@@ -40,30 +40,30 @@ function printMonthAndYear() {
     p.textContent = getMonthAndYearToday();
 }
 
-// function printWhitespaceDates(datesContainer) {
-//     const whitespaces = getThisMonthFirstDay();
+function printWhitespaceDates(datesContainer) {
+    const whitespaces = getThisMonthFirstDay();
 
-//     for (let i = 0; i < whitespaces; ++i) {
-//         let emptyP = document.createElement("p");
-//         datesContainer.appendChild(emptyP);
-//     }
-// }
+    for (let i = 0; i < whitespaces; ++i) {
+        let emptyP = document.createElement("p");
+        datesContainer.appendChild(emptyP);
+    }
+}
 
-// function printDates() {
-//     const datesContainer = document.getElementById("days-of-month");
-//     const nrOfDays = monthStrings[monthOnDisplay.getMonth()][1];
+function printDates() {
+    const datesContainer = document.getElementById("days-of-month");
+    const nrOfDays = monthStrings[monthOnDisplay.getMonth()][1];
 
-//     printWhitespaceDates(datesContainer);
+    printWhitespaceDates(datesContainer);
 
-//     for (let i = 1; i <= nrOfDays; ++i) {
-//         let date = document.createElement("p");
-//         date.textContent = `${i}`;
-//         datesContainer.appendChild(date);
-//     }
-// }
+    for (let i = 1; i <= nrOfDays; ++i) {
+        let date = document.createElement("p");
+        date.textContent = `${i}`;
+        datesContainer.appendChild(date);
+    }
+}
 
-// printMonthAndYear();
-// printDates();
+printMonthAndYear();
+printDates();
 
 module.exports = {
     getMonthAndYearToday,
