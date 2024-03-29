@@ -24,6 +24,10 @@ function getThisMonthFirstDay() {
     return monthOnDisplay.getDay() - 1; // Make monday have index 0.
 }
 
+function incrementMonth(date) {
+    date.setMonth(date.getMonth() + 1);
+}
+
 // function printMonthAndYear() {
 //     const container = document.getElementById("calendar-container");
 //     container.firstElementChild.textContent = getMonthAndYearToday();
@@ -56,5 +60,6 @@ function getThisMonthFirstDay() {
 
 module.exports = {
     getMonthAndYearToday,
-    getThisMonthFirstDay
+    getThisMonthFirstDay,
+    incrementMonth
 }

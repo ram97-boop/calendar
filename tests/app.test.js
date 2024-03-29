@@ -28,3 +28,14 @@ test("increment date's month by 1", () => {
 
     expect(actual).toBe(expected);
 });
+
+test("increment year when incrementing December month", () => {
+    const date = new Date("2024-12-29");
+
+    app.incrementMonth(date);
+
+    const actual = date.toISOString();
+    const expected = "2025-01-29T00:00:00.000Z";
+
+    expect(actual).toBe(expected);
+});
