@@ -17,3 +17,14 @@ test("return day of the week of current month's 1st day", () => {
 
     expect(actual).toBe(expected);
 });
+
+test("increment date's month by 1", () => {
+    const date = new Date("2024-03-29");
+
+    app.incrementMonth(date);
+
+    const actual = date.getMonth();
+    const expected = 4;
+
+    expect(actual).toBe(expected);
+});
