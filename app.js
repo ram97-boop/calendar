@@ -28,6 +28,13 @@ function incrementMonth(date) {
     date.setMonth(date.getMonth() + 1);
 }
 
+function decrementMonth(date) {
+    datesMonth = date.getMonth();
+    if (datesMonth > today.getMonth()) {
+        date.setMonth(datesMonth - 1);
+    }
+}
+
 // function printMonthAndYear() {
 //     const container = document.getElementById("calendar-container");
 //     container.firstElementChild.textContent = getMonthAndYearToday();
@@ -61,5 +68,6 @@ function incrementMonth(date) {
 module.exports = {
     getMonthAndYearToday,
     getThisMonthFirstDay,
-    incrementMonth
+    incrementMonth,
+    decrementMonth
 }
