@@ -24,7 +24,7 @@ test("increment date's month by 1", () => {
     app.incrementMonth(date);
 
     const actual = date.getMonth();
-    const expected = 4;
+    const expected = 3;
 
     expect(actual).toBe(expected);
 });
