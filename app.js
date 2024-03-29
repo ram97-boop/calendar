@@ -30,7 +30,8 @@ function incrementMonth(date) {
 
 function decrementMonth(date) {
     datesMonth = date.getMonth();
-    if (datesMonth > today.getMonth()) {
+    if (datesMonth > today.getMonth()
+        || date.getFullYear() > today.getFullYear()) {
         date.setMonth(datesMonth - 1);
     }
 }
@@ -62,8 +63,39 @@ function printDates() {
     }
 }
 
+function clearDates() {
+    const datesContainer = document.getElementById("days-of-month");
+
+    while (datesContainer.lastChild) {
+        datesContainer.removeChild(datesContainer.lastChild);
+    }
+}
+
+function makeButtonsChangeMonth() {
+    const leftButton = document.getElementById("prev-month");
+    const rightButton = document.getElementById("next-month");
+
+    leftButton.addEventListener("click", () => {
+        if (monthOnDisplay.getMonth() > today.getMonth()
+            || monthOnDisplay.getFullYear() > today.getFullYear()) {
+            decrementMonth(monthOnDisplay);
+            clearDates();
+            printMonthAndYear();
+            printDates();
+        }
+    });
+
+    rightButton.addEventListener("click", () => {
+        incrementMonth(monthOnDisplay);
+        clearDates();
+        printMonthAndYear();
+        printDates();
+    });
+}
+
 printMonthAndYear();
 printDates();
+makeButtonsChangeMonth();
 
 module.exports = {
     getMonthAndYearToday,
