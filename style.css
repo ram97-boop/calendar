@@ -68,12 +68,35 @@ body {
     justify-content: center;
 }
 
-.full {
+#days-of-month p {
+    background-color: white;
+}
+
+#days-of-month p:hover {
+    filter: brightness(0.9);
+    cursor: pointer;
+}
+
+#days-of-month p:active {
+    filter: brightness(0.8);
+    cursor: grabbing;
+}
+
+#days-of-month p:empty {
+    filter: none;
+    cursor: default;
+}
+
+#days-of-month p.full {
     background-color: lightcoral;
+    filter: none;
+    cursor: default;
 }
 
 .blocked,
 #days-of-month > p:nth-child(7n) {
     background-color: grey;
     color: white;
+    filter: none;
+    cursor: default;
 }
