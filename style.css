@@ -54,18 +54,18 @@ body {
     background-color: #fff2cc;
 }
 
-#days-of-month {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-#days-of-week p,
-#days-of-month p {
+#days-of-month p,
+#days-of-week p {
     width: 14.28%;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+#days-of-month {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .full {
