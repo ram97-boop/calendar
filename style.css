@@ -43,3 +43,13 @@ body {
     width: 14.28%;
     text-align: center;
 }
+
+.full {
+    background-color: lightcoral;
+}
+
+.blocked,
+#days-of-month > p:nth-child(7n) {
+    background-color: grey;
+    color: white;
+}
