@@ -59,8 +59,8 @@ body {
     flex-wrap: wrap;
 }
 
-#days-of-month p,
-#days-of-week p {
+#days-of-week p,
+#days-of-month p {
     width: 14.28%;
     text-align: center;
     display: flex;
