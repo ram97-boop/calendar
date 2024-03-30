@@ -18,6 +18,25 @@ body {
 #month-interface {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    background-color: #ffe699;
+}
+
+#month-interface button {
+    height: 30px;
+    width: 25%;
+    background-color: #fadb7d;
+    border: none;
+}
+
+#month-interface button:hover {
+    filter: brightness(1.1);
+    cursor: pointer;
+}
+
+#month-interface button:active {
+    filter: brightness(0.8);
+    cursor: grabbing;
 }
 
 #month-and-year {
@@ -32,6 +51,7 @@ body {
 #days-of-week {
     display: flex;
     /* justify-content: space-evenly; */
+    background-color: #fff2cc;
 }
 
 #days-of-month {
