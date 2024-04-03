@@ -10,7 +10,7 @@ body {
 }
 
 #calendar-container {
-    flex: 1 0 auto;
+    flex: 1 1 auto;
     border: 1px solid black;
     display: grid;
     grid-template-rows: 1fr 7fr;
