@@ -40,7 +40,7 @@ function incrementMonth(date) {
 
 function decrementMonth(date) {
     const today = new Date();
-    datesMonth = date.getMonth();
+    const datesMonth = date.getMonth();
     if (datesMonth > today.getMonth()
         || date.getFullYear() > today.getFullYear()) {
         date.setMonth(datesMonth - 1);
