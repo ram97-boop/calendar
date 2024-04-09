@@ -5,7 +5,7 @@ template.innerHTML = `
           margin: 0;
       }
       
-      body {
+      :host {
           font-family: sans-serif;
           display: flex;
           height: 100vh;
@@ -109,7 +109,6 @@ template.innerHTML = `
       <div id="month-interface">
         <button id="prev-month">←</button>
         <p id="month-and-year">
-          <slot name="month-year"></slot>
         </p>
         <button id="next-month">→</button>
       </div>
@@ -124,7 +123,6 @@ template.innerHTML = `
           <p>Sun</p>
         </div>
         <div id="days-of-month">
-          <slot name="dates"></slot>
         </div>
       </div>
     </div>
@@ -132,6 +130,7 @@ template.innerHTML = `
 
 class CustomCalendar extends HTMLElement {
     constructor() {
+        super();
         this.monthStrings = [
             ["Januari", 31],
             ["Februari", 28],
@@ -146,13 +145,24 @@ class CustomCalendar extends HTMLElement {
             ["November", 30],
             ["December", 31]
         ];
+        this.attachShadow({ mode: "open" });
+        this.shadowRoot.append(template.content.cloneNode(true));
         this.today = new Date(Date.now());
-        this.monthOnDisplay = new Date(today);
+        this.monthOnDisplay = new Date(this.today);
+        this.printMonthAndYear();
     }
 
     connectedCallback() {
-        const shadow = this.attachShadow({ mode: "open" });
-        shadow.append(template.content.cloneNode(true));
+    }
+
+    getMonthAndYearToday() {
+        return `${this.monthStrings[this.monthOnDisplay.getMonth()][0]} ${this.monthOnDisplay.getFullYear()}`;
+    }
+
+    printMonthAndYear() {
+        // const p = document.getElementById("month-and-year");
+        const p = this.shadowRoot.getElementById("month-and-year");
+        p.textContent = this.getMonthAndYearToday();
     }
 }
 
