@@ -14,8 +14,18 @@ const monthStrings = [
 ];
 let monthOnDisplay;
 
+function updateFebruaryNrOfDays(date) {
+    if (date.getMonth() === 1) {
+        const febLastDay = new Date(date);
+        febLastDay.setMonth(2);
+        febLastDay.setDate(0);
+        monthStrings[1][1] = febLastDay.getDate();
+    }
+}
+
 function getMonthAndYearToday(today) {
     monthOnDisplay = new Date(today);
+    updateFebruaryNrOfDays(today);
     return `${monthStrings[today.getMonth()][0]} ${today.getFullYear()}`;
 }
 
@@ -103,5 +113,7 @@ module.exports = {
     getMonthAndYearToday,
     getThisMonthFirstDay,
     incrementMonth,
-    decrementMonth
+    decrementMonth,
+    updateFebruaryNrOfDays,
+    monthStrings
 }
