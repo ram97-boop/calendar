@@ -1,6 +1,6 @@
 const monthStrings = [
     ["Januari", 31],
-    ["Februari", 28],
+    ["Februari", 0],
     ["Mars", 31],
     ["April", 30],
     ["Maj", 31],
@@ -14,6 +14,7 @@ const monthStrings = [
 ];
 let monthOnDisplay;
 
+// for leap days
 function updateFebruaryNrOfDays(date) {
     if (date.getMonth() === 1) {
         const febLastDay = new Date(date);
@@ -40,7 +41,7 @@ function incrementMonth(date) {
 
 function decrementMonth(date) {
     const today = new Date();
-    datesMonth = date.getMonth();
+    const datesMonth = date.getMonth();
     if (datesMonth > today.getMonth()
         || date.getFullYear() > today.getFullYear()) {
         date.setMonth(datesMonth - 1);
