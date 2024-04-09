@@ -157,6 +157,7 @@ class CustomCalendar extends HTMLElement {
     connectedCallback() {
     }
 
+    // for leap days
     updateFebruaryNrOfDays(date) {
         if (date.getMonth() === 1) {
             const febLastDay = new Date(date);
