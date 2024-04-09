@@ -108,7 +108,9 @@ template.innerHTML = `
     <div id="calendar-container">
       <div id="month-interface">
         <button id="prev-month">←</button>
-        <p id="month-and-year"></p>
+        <p id="month-and-year">
+          <slot name="month-year"></slot>
+        </p>
         <button id="next-month">→</button>
       </div>
       <div id="dates">
@@ -122,6 +124,7 @@ template.innerHTML = `
           <p>Sun</p>
         </div>
         <div id="days-of-month">
+          <slot name="dates"></slot>
         </div>
       </div>
     </div>
@@ -144,6 +147,7 @@ class CustomCalendar extends HTMLElement {
             ["December", 31]
         ];
         this.today = new Date(Date.now());
+        this.monthOnDisplay = new Date(today);
     }
 
     connectedCallback() {
