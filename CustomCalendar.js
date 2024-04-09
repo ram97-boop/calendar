@@ -160,7 +160,6 @@ class CustomCalendar extends HTMLElement {
     }
 
     printMonthAndYear() {
-        // const p = document.getElementById("month-and-year");
         const p = this.shadowRoot.getElementById("month-and-year");
         p.textContent = this.getMonthAndYearToday();
     }
