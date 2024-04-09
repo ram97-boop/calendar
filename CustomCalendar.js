@@ -151,6 +151,7 @@ class CustomCalendar extends HTMLElement {
         this.shadowRoot.append(template.content.cloneNode(true));
         this.printMonthAndYear(new Date());
         this.printDates();
+        this.makeButtonsChangeMonth();
     }
 
     connectedCallback() {
@@ -178,6 +179,19 @@ class CustomCalendar extends HTMLElement {
         return this.monthOnDisplay.getDay() - 1; // Make monday have index 0.
     }
 
+    incrementMonth(date) {
+        date.setMonth(date.getMonth() + 1);
+    }
+
+    decrementMonth(date) {
+        const today = new Date();
+        const datesMonth = date.getMonth();
+        if (datesMonth > today.getMonth()
+            || date.getFullYear() > today.getFullYear()) {
+            date.setMonth(datesMonth - 1);
+        }
+    }
+
     printMonthAndYear(date) {
         const p = this.shadowRoot.getElementById("month-and-year");
         p.textContent = this.getMonthAndYearToday(date);
@@ -203,6 +217,37 @@ class CustomCalendar extends HTMLElement {
             date.textContent = `${i}`;
             datesContainer.appendChild(date);
         }
+    }
+
+    clearDates() {
+        const datesContainer = this.shadowRoot.getElementById("days-of-month");
+
+        while (datesContainer.lastChild) {
+            datesContainer.removeChild(datesContainer.lastChild);
+        }
+    }
+
+    makeButtonsChangeMonth() {
+        const leftButton = this.shadowRoot.getElementById("prev-month");
+        const rightButton = this.shadowRoot.getElementById("next-month");
+
+        leftButton.addEventListener("click", () => {
+            const today = new Date();
+            if (this.monthOnDisplay.getMonth() > today.getMonth()
+                || this.monthOnDisplay.getFullYear() > today.getFullYear()) {
+                this.decrementMonth(this.monthOnDisplay);
+                this.clearDates();
+                this.printMonthAndYear(this.monthOnDisplay); // monthOnDisplay is decremented
+                this.printDates();
+            }
+        });
+
+        rightButton.addEventListener("click", () => {
+            this.incrementMonth(this.monthOnDisplay);
+            this.clearDates();
+            this.printMonthAndYear(this.monthOnDisplay);
+            this.printDates();
+        });
     }
 }
 
