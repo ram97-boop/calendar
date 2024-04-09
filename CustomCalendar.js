@@ -150,6 +150,7 @@ class CustomCalendar extends HTMLElement {
         this.today = new Date(Date.now());
         this.monthOnDisplay = new Date(this.today);
         this.printMonthAndYear();
+        this.printDates();
     }
 
     connectedCallback() {
@@ -162,6 +163,34 @@ class CustomCalendar extends HTMLElement {
     printMonthAndYear() {
         const p = this.shadowRoot.getElementById("month-and-year");
         p.textContent = this.getMonthAndYearToday();
+    }
+
+    getThisMonthFirstDay() {
+        this.monthOnDisplay.setDate(1);
+        return this.monthOnDisplay.getDay() - 1; // Make monday have index 0.
+    }
+
+    printWhitespaceDates(datesContainer) {
+        const whitespaces = this.getThisMonthFirstDay();
+
+        for (let i = 0; i < whitespaces; ++i) {
+            let emptyP = document.createElement("p");
+            datesContainer.appendChild(emptyP);
+        }
+    }
+
+    printDates() {
+        // const datesContainer = document.getElementById("days-of-month");
+        const datesContainer = this.shadowRoot.getElementById("days-of-month");
+        const nrOfDays = this.monthStrings[this.monthOnDisplay.getMonth()][1];
+
+        this.printWhitespaceDates(datesContainer);
+
+        for (let i = 1; i <= nrOfDays; ++i) {
+            let date = document.createElement("p");
+            date.textContent = `${i}`;
+            datesContainer.appendChild(date);
+        }
     }
 }
 
