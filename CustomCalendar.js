@@ -135,7 +135,7 @@ class CustomCalendar extends HTMLElement {
         super();
         this.monthStrings = [
             ["Januari", 31],
-            ["Februari", 28],
+            ["Februari", 0],
             ["Mars", 31],
             ["April", 30],
             ["Maj", 31],
