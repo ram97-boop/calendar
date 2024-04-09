@@ -12,7 +12,7 @@ const monthStrings = [
     ["November", 30],
     ["December", 31]
 ];
-const today = new Date(Date.now());
+const today = new Date();
 let monthOnDisplay = new Date(today);
 
 function getMonthAndYearToday() {
