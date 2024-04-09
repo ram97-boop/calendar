@@ -147,7 +147,7 @@ class CustomCalendar extends HTMLElement {
         ];
         this.attachShadow({ mode: "open" });
         this.shadowRoot.append(template.content.cloneNode(true));
-        this.today = new Date(Date.now());
+        this.today = new Date();
         this.monthOnDisplay = new Date(this.today);
         this.printMonthAndYear();
         this.printDates();
@@ -157,7 +157,9 @@ class CustomCalendar extends HTMLElement {
     }
 
     getMonthAndYearToday() {
-        return `${this.monthStrings[this.monthOnDisplay.getMonth()][0]} ${this.monthOnDisplay.getFullYear()}`;
+        return `${this.monthStrings[
+            this.monthOnDisplay.getMonth()
+        ][0]} ${this.monthOnDisplay.getFullYear()}`;
     }
 
     printMonthAndYear() {
