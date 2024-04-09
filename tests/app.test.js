@@ -3,7 +3,7 @@ const app = require("../app");
 test("returns today's month", () => {
     jest.useFakeTimers().setSystemTime(new Date("2024-03-01"));
 
-    const actual = app.getMonthAndYearToday();
+    const actual = app.getMonthAndYearToday(new Date());
     const expected = "Mars 2024";
 
     expect(actual).toBe(expected);
@@ -59,6 +59,17 @@ test("don't decrement month if it's today's month", () => {
 
     const actual = date.getMonth();
     const expected = 2;
+
+    expect(actual).toBe(expected);
+});
+
+test("get 29 days for February in leap year", () => {
+    jest.useFakeTimers().setSystemTime(new Date("2024-02-09"));
+
+    app.getMonthAndYearToday(new Date);
+
+    const actual = app.monthStrings[1][1];
+    const expected = 29;
 
     expect(actual).toBe(expected);
 });

@@ -12,11 +12,21 @@ const monthStrings = [
     ["November", 30],
     ["December", 31]
 ];
-const today = new Date(Date.now());
-let monthOnDisplay = new Date(today);
+let monthOnDisplay;
 
-function getMonthAndYearToday() {
-    return `${monthStrings[monthOnDisplay.getMonth()][0]} ${monthOnDisplay.getFullYear()}`;
+function updateFebruaryNrOfDays(date) {
+    if (date.getMonth() === 1) {
+        const febLastDay = new Date(date);
+        febLastDay.setMonth(2);
+        febLastDay.setDate(0);
+        monthStrings[1][1] = febLastDay.getDate();
+    }
+}
+
+function getMonthAndYearToday(today) {
+    monthOnDisplay = new Date(today);
+    updateFebruaryNrOfDays(today);
+    return `${monthStrings[today.getMonth()][0]} ${today.getFullYear()}`;
 }
 
 function getThisMonthFirstDay() {
@@ -29,6 +39,7 @@ function incrementMonth(date) {
 }
 
 function decrementMonth(date) {
+    const today = new Date();
     datesMonth = date.getMonth();
     if (datesMonth > today.getMonth()
         || date.getFullYear() > today.getFullYear()) {
@@ -36,9 +47,9 @@ function decrementMonth(date) {
     }
 }
 
-function printMonthAndYear() {
+function printMonthAndYear(date) {
     const p = document.getElementById("month-and-year");
-    p.textContent = getMonthAndYearToday();
+    p.textContent = getMonthAndYearToday(date);
 }
 
 function printWhitespaceDates(datesContainer) {
@@ -76,11 +87,12 @@ function makeButtonsChangeMonth() {
     const rightButton = document.getElementById("next-month");
 
     leftButton.addEventListener("click", () => {
+        const today = new Date();
         if (monthOnDisplay.getMonth() > today.getMonth()
             || monthOnDisplay.getFullYear() > today.getFullYear()) {
             decrementMonth(monthOnDisplay);
             clearDates();
-            printMonthAndYear();
+            printMonthAndYear(monthOnDisplay); // monthOnDisplay is decremented
             printDates();
         }
     });
@@ -88,12 +100,12 @@ function makeButtonsChangeMonth() {
     rightButton.addEventListener("click", () => {
         incrementMonth(monthOnDisplay);
         clearDates();
-        printMonthAndYear();
+        printMonthAndYear(monthOnDisplay);
         printDates();
     });
 }
 
-printMonthAndYear();
+printMonthAndYear(new Date()); // print today
 printDates();
 makeButtonsChangeMonth();
 
@@ -101,5 +113,7 @@ module.exports = {
     getMonthAndYearToday,
     getThisMonthFirstDay,
     incrementMonth,
-    decrementMonth
+    decrementMonth,
+    updateFebruaryNrOfDays,
+    monthStrings
 }
