@@ -1,3 +1,8 @@
+const fullDays = {
+    "2024-04": [16, 30, 11],
+    "2024-06": [12, 30, 29]
+};
+
 const template = document.createElement("template");
 template.innerHTML = `
     <style>
@@ -218,6 +223,8 @@ class CustomCalendar extends HTMLElement {
             date.textContent = `${i}`;
             datesContainer.appendChild(date);
         }
+
+        this.setFullDays(fullDays, this.monthOnDisplay);
     }
 
     clearDates() {
@@ -249,6 +256,25 @@ class CustomCalendar extends HTMLElement {
             this.printMonthAndYear(this.monthOnDisplay);
             this.printDates();
         });
+    }
+
+    setFullDays(fullDays, yearAndMonth) {
+        const isoMonth =
+            (yearAndMonth.getMonth() + 1).toString().padStart(2, 0);
+        const yearAndMonthString =
+            `${yearAndMonth.getFullYear()}-${isoMonth}`;
+
+        if (yearAndMonthString in fullDays) {
+            const whitespaceOffset = this.getThisMonthFirstDay();
+
+            for (const day of fullDays[yearAndMonthString]) {
+                const date =
+                    this.shadowRoot.querySelector(
+                        `#days-of-month p:nth-child(${day + whitespaceOffset})`
+                    );
+                date.classList.add("full");
+            }
+        }
     }
 }
 
