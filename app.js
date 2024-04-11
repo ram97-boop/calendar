@@ -106,7 +106,7 @@ function makeButtonsChangeMonth() {
     });
 }
 
-printMonthAndYear(new Date()); // print today
+printMonthAndYear(new Date()); // print today's month and year.
 printDates();
 makeButtonsChangeMonth();
 
