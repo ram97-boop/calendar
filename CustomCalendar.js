@@ -133,6 +133,9 @@ class CustomCalendar extends HTMLElement {
 
     constructor() {
         super();
+    }
+
+    connectedCallback() {
         this.monthStrings = [
             ["Januari", 31],
             ["Februari", 0],
@@ -152,9 +155,6 @@ class CustomCalendar extends HTMLElement {
         this.printMonthAndYear(new Date());
         this.printDates();
         this.makeButtonsChangeMonth();
-    }
-
-    connectedCallback() {
     }
 
     // for leap days
