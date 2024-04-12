@@ -73,3 +73,18 @@ test("get 29 days for February in leap year", () => {
 
     expect(actual).toBe(expected);
 });
+
+test("get 'YYYY-MM' format from Date object", () => {
+    const dates = [
+        new Date("2024-04-12"),
+        new Date("2024-11-01")
+    ];
+
+    const actual = [];
+    const expected = ["2024-04", "2024-11"];
+    for (date of dates) {
+        actual.push(app.getYearMonthString(date));
+    }
+
+    expect(actual).toEqual(expected);
+});
