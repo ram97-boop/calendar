@@ -258,11 +258,13 @@ class CustomCalendar extends HTMLElement {
         });
     }
 
+    getYearMonthString(date) {
+        const isoMonth = (date.getMonth() + 1).toString().padStart(2, "0");
+        return `${date.getFullYear()}-${isoMonth}`;
+    }
+
     setFullDays(fullDays, yearAndMonth) {
-        const isoMonth =
-            (yearAndMonth.getMonth() + 1).toString().padStart(2, 0);
-        const yearAndMonthString =
-            `${yearAndMonth.getFullYear()}-${isoMonth}`;
+        const yearAndMonthString = this.getYearMonthString(yearAndMonth);
 
         if (yearAndMonthString in fullDays) {
             const whitespaceOffset = this.getThisMonthFirstDay();
