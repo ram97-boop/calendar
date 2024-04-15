@@ -1,4 +1,7 @@
-let fullDays = {};
+const fullDays = {
+    "2024-04": [16, 30, 11],
+    "2024-06": [12, 30, 29]
+};
 
 const template = document.createElement("template");
 template.innerHTML = `
@@ -155,8 +158,7 @@ class CustomCalendar extends HTMLElement {
         this.attachShadow({ mode: "open" });
         this.shadowRoot.append(template.content.cloneNode(true));
         this.printMonthAndYear(new Date());
-        this.getFullDaysObject();
-        //this.printDates();
+        this.printDates();
         this.makeButtonsChangeMonth();
     }
 
@@ -275,23 +277,6 @@ class CustomCalendar extends HTMLElement {
                 date.classList.add("full");
             }
         }
-    }
-
-    async getFullDaysObject() {
-        fullDays = await this.getFullDays();
-        this.printDates();
-    }
-
-    getFullDays() {
-        return new Promise((resolve) => {
-            const someFullDays = {
-                "2024-04": [16, 30, 11],
-                "2024-06": [12, 30, 29]
-            };
-            setTimeout(() => {
-                resolve(someFullDays);
-            }, 4000);
-        });
     }
 }
 
