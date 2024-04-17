@@ -32,7 +32,7 @@ function getMonthAndYearToday(today) {
 
 function getThisMonthFirstDay() {
     monthOnDisplay.setDate(1);
-    // Make monday have index 0, and avoid -1 for dates starting on a Sunday.
+    // Make monday have index 0, and avoid -1 for months starting on a Sunday.
     return (monthOnDisplay.getDay() - 1 + 7) % 7;
 }
 
