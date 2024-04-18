@@ -68,20 +68,17 @@ function printDates() {
     const datesContainer = document.getElementById("days-of-month");
     const nrOfDays = monthStrings[monthOnDisplay.getMonth()][1];
 
+    // clear previously printed dates.
+    while (datesContainer.lastChild) {
+        datesContainer.removeChild(datesContainer.lastChild);
+    }
+
     printWhitespaceDates(datesContainer);
 
     for (let i = 1; i <= nrOfDays; ++i) {
         let date = document.createElement("p");
         date.textContent = `${i}`;
         datesContainer.appendChild(date);
-    }
-}
-
-function clearDates() {
-    const datesContainer = document.getElementById("days-of-month");
-
-    while (datesContainer.lastChild) {
-        datesContainer.removeChild(datesContainer.lastChild);
     }
 }
 
@@ -94,7 +91,6 @@ function makeButtonsChangeMonth() {
         if (monthOnDisplay.getMonth() > today.getMonth()
             || monthOnDisplay.getFullYear() > today.getFullYear()) {
             decrementMonth(monthOnDisplay);
-            clearDates();
             printMonthAndYear(monthOnDisplay); // monthOnDisplay is decremented
             printDates();
         }
@@ -102,7 +98,6 @@ function makeButtonsChangeMonth() {
 
     rightButton.addEventListener("click", () => {
         incrementMonth(monthOnDisplay);
-        clearDates();
         printMonthAndYear(monthOnDisplay);
         printDates();
     });
