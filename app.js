@@ -13,6 +13,7 @@ const monthStrings = [
     ["December", 31]
 ];
 let monthOnDisplay;
+let fullDays = {};
 
 // for leap days
 function updateFebruaryNrOfDays(date) {
@@ -112,9 +113,17 @@ function getYearMonthString(date) {
     return `${date.getFullYear()}-${isoMonth}`;
 }
 
+function addEventListenerForFullDaysMessage() {
+    window.addEventListener("message", (event) => {
+        console.log("message received");
+        fullDays = event.data;
+    });
+}
+
 printMonthAndYear(new Date()); // print today's month and year.
 printDates();
 makeButtonsChangeMonth();
+addEventListenerForFullDaysMessage();
 
 module.exports = {
     monthStrings,
