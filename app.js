@@ -80,6 +80,8 @@ function printDates() {
         date.textContent = `${i}`;
         datesContainer.appendChild(date);
     }
+
+    setFullDays(fullDays, monthOnDisplay);
 }
 
 function makeButtonsChangeMonth() {
@@ -112,7 +114,23 @@ function addEventListenerForFullDaysMessage() {
     window.addEventListener("message", (event) => {
         console.log("message received");
         fullDays = event.data;
+        setFullDays(fullDays, monthOnDisplay);
     });
+}
+
+function setFullDays(fullDays, yearAndMonth) {
+    const yearAndMonthString = getYearMonthString(yearAndMonth);
+
+    if (yearAndMonthString in fullDays) {
+        const whitespaceOffset = getThisMonthFirstDay();
+
+        for (const day of fullDays[yearAndMonthString]) {
+            const date = document.querySelector(
+                `#days-of-month p:nth-child(${day + whitespaceOffset})`
+            );
+            date.classList.add("full");
+        }
+    }
 }
 
 printMonthAndYear(new Date()); // print today's month and year.
