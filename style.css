@@ -3,10 +3,56 @@
 }
 
 body {
+    --primary-color: #ffe699;
+    --secondary-color: #fff2cc;
+    --tertiary-color: #fadb7d;
+    --full-day-color: lightcoral;
+    --available-day-color: white;
+    --closed-day-color: gray;
+
     font-family: sans-serif;
     display: flex;
+    flex-direction: column;
     height: 100vh;
-    background-color: lightgray;
+    background-color: white;
+}
+
+#color-codes {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    padding: 10px 0 10px 10px;
+    background-color: var(--primary-color);
+    border: 1px solid black;
+}
+
+#color-codes>div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#color-codes p {
+    font-size: 12px;
+}
+
+#color-codes>div>span {
+    display:inline-block;
+    height: 1em;
+    width: 1em;
+    border: 1px solid black;
+}
+
+#color-codes #full>span {
+    background-color: var(--full-day-color);
+}
+
+#color-codes #available>span {
+    background-color: white;
+}
+
+#color-codes #closed>span {
+    background-color: var(--closed-day-color);
 }
 
 #calendar-container {
@@ -20,13 +66,13 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #ffe699;
+    background-color: var(--primary-color);
 }
 
 #month-interface button {
     height: 100%;
     width: 25%;
-    background-color: #fadb7d;
+    background-color: var(--tertiary-color);
     border: none;
 }
 
@@ -52,7 +98,7 @@ body {
 #days-of-week {
     display: flex;
     /* justify-content: space-evenly; */
-    background-color: #fff2cc;
+    background-color: var(--secondary-color);
 }
 
 #days-of-month {
@@ -70,7 +116,7 @@ body {
 }
 
 #days-of-month p {
-    background-color: white;
+    background-color: var(--available-day-color);
 }
 
 #days-of-month p:hover {
@@ -89,7 +135,7 @@ body {
 }
 
 #days-of-month p.full {
-    background-color: lightcoral;
+    background-color: var(--full-day-color);
     filter: none;
     cursor: default;
 }
