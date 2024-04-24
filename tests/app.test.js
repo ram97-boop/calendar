@@ -107,4 +107,31 @@ test("get correct 0-indexed day for various start dates", () => {
     }
 
     expect(actual).toEqual(expected);
-})
+});
+
+test("get the date for Easter", () => {
+    const years = [
+        "1818",
+        "1943",
+        "1961",
+        "2024",
+        "2025",
+        "2035"
+    ];
+
+    const actual = [];
+    const expected = [
+        "1818-03-22",
+        "1943-04-25",
+        "1961-04-02",
+        "2024-03-31",
+        "2025-04-20",
+        "2035-03-25"
+    ];
+
+    for (year of years) {
+        actual.push(app.getEasterDate(year));
+    }
+
+    expect(actual).toEqual(expected);
+});
