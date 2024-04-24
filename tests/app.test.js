@@ -214,3 +214,28 @@ test("get Ascension Day from Easter date", () => {
 
     expect(actual).toEqual(expected);
 });
+
+test("get Pentecost Sunday from Easter date", () => {
+    const easterDates = [
+        new Date("1951-03-25"),
+        new Date("1961-04-02"),
+        new Date("2024-03-31"),
+        new Date("2025-04-20"),
+        new Date("2035-03-25")
+    ]
+
+    const actual = []
+    const expected = [
+        new Date("1951-05-13"),
+        new Date("1961-05-21"),
+        new Date("2024-05-19"),
+        new Date("2025-06-08"),
+        new Date("2035-05-13")
+    ];
+
+    for (easter of easterDates) {
+        actual.push(app.getPentecostSundayDate(easter));
+    }
+
+    expect(actual).toEqual(expected);
+});

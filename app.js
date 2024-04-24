@@ -169,6 +169,10 @@ function getAscensionDayDate(easterDate) {
     return new Date(easterDate * 1 + (86400000 * 39));
 }
 
+function getPentecostSundayDate(easterDate) {
+    return new Date(easterDate * 1 + (86400000 * 49));
+}
+
 printMonthAndYear(new Date()); // print today's month and year.
 printDates();
 makeButtonsChangeMonth();
@@ -185,5 +189,6 @@ module.exports = {
     getEasterDate,
     getGoodFridayDate,
     getEasterMondayDate,
-    getAscensionDayDate
+    getAscensionDayDate,
+    getPentecostSundayDate
 }
