@@ -121,12 +121,12 @@ test("get the date for Easter", () => {
 
     const actual = [];
     const expected = [
-        "1818-03-22",
-        "1943-04-25",
-        "1961-04-02",
-        "2024-03-31",
-        "2025-04-20",
-        "2035-03-25"
+        new Date("1818-03-22"),
+        new Date("1943-04-25"),
+        new Date("1961-04-02"),
+        new Date("2024-03-31"),
+        new Date("2025-04-20"),
+        new Date("2035-03-25")
     ];
 
     for (year of years) {

@@ -152,7 +152,7 @@ function getEasterDate(year) {
 
     const isoMonth = month.toString().padStart(2, "0");
     const isoDay = day.toString().padStart(2, "0");
-    return `${year}-${isoMonth}-${isoDay}`;
+    return new Date(`${year}-${isoMonth}-${isoDay}`);
 }
 
 function getGoodFridayDate(easterDate) {
