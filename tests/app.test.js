@@ -138,6 +138,9 @@ test("get the date for Easter", () => {
 
 test("get date for Good Friday from Easter date", () => {
     const easterDates = [
+        new Date("1818-03-22"),
+        new Date("1943-04-25"),
+        new Date("1961-04-02"),
         new Date("2024-03-31"),
         new Date("2025-04-20"),
         new Date("2035-03-25")
@@ -145,6 +148,9 @@ test("get date for Good Friday from Easter date", () => {
 
     const actual = []
     const expected = [
+        new Date("1818-03-20"),
+        new Date("1943-04-23"),
+        new Date("1961-03-31"),
         new Date("2024-03-29"),
         new Date("2025-04-18"),
         new Date("2035-03-23")
@@ -159,6 +165,9 @@ test("get date for Good Friday from Easter date", () => {
 
 test("get Easter Monday from Easter date", () => {
     const easterDates = [
+        new Date("1818-03-22"),
+        new Date("1943-04-25"),
+        new Date("1961-04-02"),
         new Date("2024-03-31"),
         new Date("2025-04-20"),
         new Date("2035-03-25")
@@ -166,6 +175,9 @@ test("get Easter Monday from Easter date", () => {
 
     const actual = []
     const expected = [
+        new Date("1818-03-23"),
+        new Date("1943-04-26"),
+        new Date("1961-04-03"),
         new Date("2024-04-01"),
         new Date("2025-04-21"),
         new Date("2035-03-26")
