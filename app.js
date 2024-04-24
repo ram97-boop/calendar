@@ -155,6 +155,13 @@ function getEasterDate(year) {
     return `${year}-${isoMonth}-${isoDay}`;
 }
 
+function getGoodFridayDate(easterDate) {
+    const goodFriday = new Date(easterDate);
+    goodFriday.setDate(goodFriday.getDate() - 2);
+
+    return goodFriday;
+}
+
 printMonthAndYear(new Date()); // print today's month and year.
 printDates();
 makeButtonsChangeMonth();
@@ -168,5 +175,6 @@ module.exports = {
     decrementMonth,
     updateFebruaryNrOfDays,
     getYearMonthString,
-    getEasterDate
+    getEasterDate,
+    getGoodFridayDate
 }
