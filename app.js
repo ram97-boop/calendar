@@ -156,10 +156,8 @@ function getEasterDate(year) {
 }
 
 function getGoodFridayDate(easterDate) {
-    const goodFriday = new Date(easterDate);
-    goodFriday.setDate(goodFriday.getDate() - 2);
-
-    return goodFriday;
+    // subtract 2 days in unix timestamp format.
+    return new Date(easterDate * 1 - (86400000 * 2));
 }
 
 function getEasterMondayDate(easterDate) {
