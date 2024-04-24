@@ -162,6 +162,11 @@ function getGoodFridayDate(easterDate) {
     return goodFriday;
 }
 
+function getEasterMondayDate(easterDate) {
+    // add a day to unix timestamp formatted date
+    return new Date(easterDate * 1 + 86400000);
+}
+
 printMonthAndYear(new Date()); // print today's month and year.
 printDates();
 makeButtonsChangeMonth();
@@ -176,5 +181,6 @@ module.exports = {
     updateFebruaryNrOfDays,
     getYearMonthString,
     getEasterDate,
-    getGoodFridayDate
+    getGoodFridayDate,
+    getEasterMondayDate
 }
