@@ -239,3 +239,26 @@ test("get Pentecost Sunday from Easter date", () => {
 
     expect(actual).toEqual(expected);
 });
+
+test("get All Saints' Day", () => {
+    const years = [
+        "1954",
+        "2024",
+        "2025",
+        "2035"
+    ];
+
+    const actual = []
+    const expected = [
+        new Date("1954-11-06"),
+        new Date("2024-11-02"),
+        new Date("2025-11-01"),
+        new Date("2035-11-03")
+    ];
+
+    for (year of years) {
+        actual.push(app.getAllSaintsDayDate(year));
+    }
+
+    expect(actual).toEqual(expected);
+});

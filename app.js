@@ -173,6 +173,17 @@ function getPentecostSundayDate(easterDate) {
     return new Date(easterDate * 1 + (86400000 * 49));
 }
 
+function getAllSaintsDayDate(year) {
+    let date = new Date(`${year}-10-31`);
+
+    for (let i = 0; i < 7; ++i) {
+        date = new Date(date * 1 + 86400000); // next day
+        if (date.getDay() === 6) { // if Saturday
+            return date;
+        }
+    }
+}
+
 printMonthAndYear(new Date()); // print today's month and year.
 printDates();
 makeButtonsChangeMonth();
@@ -190,5 +201,6 @@ module.exports = {
     getGoodFridayDate,
     getEasterMondayDate,
     getAscensionDayDate,
-    getPentecostSundayDate
+    getPentecostSundayDate,
+    getAllSaintsDayDate
 }
