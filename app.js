@@ -147,11 +147,11 @@ function getEasterDate(year) {
     const k = c % 4;
     const l = (32 + 2 * e + 2 * i - h - k) % 7;
     const m = Math.floor((a + 11 * h + 22 * l) / 451);
-    const n = Math.floor((h + l - 7 * m + 114) / 31);
-    const o = (h + l - 7 * m + 114) % 31
+    const month = Math.floor((h + l - 7 * m + 114) / 31);
+    const day = ((h + l - 7 * m + 114) % 31) + 1
 
-    const isoMonth = n.toString().padStart(2, "0");
-    const isoDay = (o + 1).toString().padStart(2, "0");
+    const isoMonth = month.toString().padStart(2, "0");
+    const isoDay = day.toString().padStart(2, "0");
     return `${year}-${isoMonth}-${isoDay}`;
 }
 
