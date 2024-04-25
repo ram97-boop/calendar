@@ -14,6 +14,7 @@ const monthStrings = [
 ];
 let monthOnDisplay;
 let fullDays = {};
+let closedDays = {};
 
 // for leap days
 function updateFebruaryNrOfDays(date) {
@@ -184,6 +185,42 @@ function getAllSaintsDayDate(year) {
     }
 }
 
+function putHolidaysInClosedDays() {
+    const currentYear = (new Date(Date.now())).getFullYear();
+    const easter = getEasterDate(currentYear);
+    const holidays = [
+        new Date(`${currentYear}-01-01`), // new year's day
+        new Date(`${currentYear}-01-06`), // epiphany
+        getGoodFridayDate(easter),
+        easter,
+        getEasterMondayDate(easter),
+        new Date(`${currentYear}-05-01`), // 1st of May
+        getAscensionDayDate(easter),
+        getPentecostSundayDate(easter),
+        new Date(`${currentYear}-06-06`), // Sweden's national day
+        new Date(`${currentYear}-06-21`), // Midsummer's Eve
+        new Date(`${currentYear}-06-22`), // Midsummer
+        getAllSaintsDayDate(currentYear),
+        new Date(`${currentYear}-12-24`), // Christmas Eve
+        new Date(`${currentYear}-12-25`), // Christmas
+        new Date(`${currentYear}-12-26`), // Boxing Day
+        new Date(`${currentYear}-12-31`), // New year's eve
+    ];
+
+    let key = "";
+    let month = "";
+    for (holiday of holidays) {
+        month = (holiday.getMonth() + 1).toString().padStart(2, "0");
+        key = `${currentYear}-${month}`;
+        if (closedDays[key]) {
+            closedDays[key].push(holiday.getDate());
+        }
+        else {
+            closedDays[key] = [holiday.getDate()];
+        }
+    }
+}
+
 printMonthAndYear(new Date()); // print today's month and year.
 printDates();
 makeButtonsChangeMonth();
@@ -191,6 +228,7 @@ addEventListenerForFullDaysMessage();
 
 module.exports = {
     monthStrings,
+    closedDays,
     getMonthAndYearToday,
     getThisMonthFirstDay,
     incrementMonth,
@@ -202,5 +240,6 @@ module.exports = {
     getEasterMondayDate,
     getAscensionDayDate,
     getPentecostSundayDate,
-    getAllSaintsDayDate
+    getAllSaintsDayDate,
+    putHolidaysInClosedDays,
 }
