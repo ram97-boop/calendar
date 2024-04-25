@@ -161,6 +161,11 @@ function getGoodFridayDate(easterDate) {
     return new Date(easterDate * 1 - (86400000 * 2));
 }
 
+function getHolySaturdayDate(easterDate) {
+    // subtract 1 day in unix timestamp format.
+    return new Date(easterDate * 1 - 86400000);
+}
+
 function getEasterMondayDate(easterDate) {
     // add a day to unix timestamp formatted date
     return new Date(easterDate * 1 + 86400000);
@@ -192,6 +197,7 @@ function putHolidaysInClosedDays() {
         new Date(`${currentYear}-01-01`), // new year's day
         new Date(`${currentYear}-01-06`), // epiphany
         getGoodFridayDate(easter),
+        getHolySaturdayDate(easter),
         easter,
         getEasterMondayDate(easter),
         new Date(`${currentYear}-05-01`), // 1st of May
@@ -237,6 +243,7 @@ module.exports = {
     getYearMonthString,
     getEasterDate,
     getGoodFridayDate,
+    getHolySaturdayDate,
     getEasterMondayDate,
     getAscensionDayDate,
     getPentecostSundayDate,

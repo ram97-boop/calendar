@@ -144,7 +144,7 @@ test("get date for Good Friday from Easter date", () => {
         new Date("2024-03-31"),
         new Date("2025-04-20"),
         new Date("2035-03-25")
-    ]
+    ];
 
     const actual = []
     const expected = [
@@ -158,6 +158,33 @@ test("get date for Good Friday from Easter date", () => {
 
     for (easter of easterDates) {
         actual.push(app.getGoodFridayDate(easter));
+    }
+
+    expect(actual).toEqual(expected);
+});
+
+test("get Holy Saturday from Easter date", () => {
+    const easterDates = [
+        new Date("1818-03-22"),
+        new Date("1943-04-25"),
+        new Date("1961-04-02"),
+        new Date("2024-03-31"),
+        new Date("2025-04-20"),
+        new Date("2035-03-25")
+    ];
+
+    const actual = []
+    const expected = [
+        new Date("1818-03-21"),
+        new Date("1943-04-24"),
+        new Date("1961-04-01"),
+        new Date("2024-03-30"),
+        new Date("2025-04-19"),
+        new Date("2035-03-24")
+    ];
+
+    for (easter of easterDates) {
+        actual.push(app.getHolySaturdayDate(easter));
     }
 
     expect(actual).toEqual(expected);
