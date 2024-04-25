@@ -81,10 +81,10 @@ test("get 'YYYY-MM' format from Date object", () => {
     ];
 
     const actual = [];
-    const expected = ["2024-04", "2024-11"];
     for (date of dates) {
         actual.push(app.getYearMonthString(date));
     }
+    const expected = ["2024-04", "2024-11"];
 
     expect(actual).toEqual(expected);
 });
@@ -98,13 +98,11 @@ test("get correct 0-indexed day for various start dates", () => {
     ];
 
     const actual = [];
-    const expected = [4, 0, 2, 6];
-
     for (date of dates) {
         app.getMonthAndYearToday(date);
-
         actual.push(app.getThisMonthFirstDay());
     }
+    const expected = [4, 0, 2, 6];
 
     expect(actual).toEqual(expected);
 });
@@ -120,6 +118,9 @@ test("get the date for Easter", () => {
     ];
 
     const actual = [];
+    for (year of years) {
+        actual.push(app.getEasterDate(year));
+    }
     const expected = [
         new Date("1818-03-22"),
         new Date("1943-04-25"),
@@ -128,10 +129,6 @@ test("get the date for Easter", () => {
         new Date("2025-04-20"),
         new Date("2035-03-25")
     ];
-
-    for (year of years) {
-        actual.push(app.getEasterDate(year));
-    }
 
     expect(actual).toEqual(expected);
 });
@@ -147,6 +144,9 @@ test("get date for Good Friday from Easter date", () => {
     ];
 
     const actual = []
+    for (easter of easterDates) {
+        actual.push(app.getGoodFridayDate(easter));
+    }
     const expected = [
         new Date("1818-03-20"),
         new Date("1943-04-23"),
@@ -155,10 +155,6 @@ test("get date for Good Friday from Easter date", () => {
         new Date("2025-04-18"),
         new Date("2035-03-23")
     ];
-
-    for (easter of easterDates) {
-        actual.push(app.getGoodFridayDate(easter));
-    }
 
     expect(actual).toEqual(expected);
 });
@@ -174,6 +170,9 @@ test("get Holy Saturday from Easter date", () => {
     ];
 
     const actual = []
+    for (easter of easterDates) {
+        actual.push(app.getHolySaturdayDate(easter));
+    }
     const expected = [
         new Date("1818-03-21"),
         new Date("1943-04-24"),
@@ -182,10 +181,6 @@ test("get Holy Saturday from Easter date", () => {
         new Date("2025-04-19"),
         new Date("2035-03-24")
     ];
-
-    for (easter of easterDates) {
-        actual.push(app.getHolySaturdayDate(easter));
-    }
 
     expect(actual).toEqual(expected);
 });
@@ -201,6 +196,9 @@ test("get Easter Monday from Easter date", () => {
     ]
 
     const actual = []
+    for (easter of easterDates) {
+        actual.push(app.getEasterMondayDate(easter));
+    }
     const expected = [
         new Date("1818-03-23"),
         new Date("1943-04-26"),
@@ -209,10 +207,6 @@ test("get Easter Monday from Easter date", () => {
         new Date("2025-04-21"),
         new Date("2035-03-26")
     ];
-
-    for (easter of easterDates) {
-        actual.push(app.getEasterMondayDate(easter));
-    }
 
     expect(actual).toEqual(expected);
 });
@@ -227,6 +221,9 @@ test("get Ascension Day from Easter date", () => {
     ]
 
     const actual = []
+    for (easter of easterDates) {
+        actual.push(app.getAscensionDayDate(easter));
+    }
     const expected = [
         new Date("1951-05-03"),
         new Date("1961-05-11"),
@@ -234,10 +231,6 @@ test("get Ascension Day from Easter date", () => {
         new Date("2025-05-29"),
         new Date("2035-05-03")
     ];
-
-    for (easter of easterDates) {
-        actual.push(app.getAscensionDayDate(easter));
-    }
 
     expect(actual).toEqual(expected);
 });
@@ -252,6 +245,9 @@ test("get Pentecost Sunday from Easter date", () => {
     ]
 
     const actual = []
+    for (easter of easterDates) {
+        actual.push(app.getPentecostSundayDate(easter));
+    }
     const expected = [
         new Date("1951-05-13"),
         new Date("1961-05-21"),
@@ -259,10 +255,6 @@ test("get Pentecost Sunday from Easter date", () => {
         new Date("2025-06-08"),
         new Date("2035-05-13")
     ];
-
-    for (easter of easterDates) {
-        actual.push(app.getPentecostSundayDate(easter));
-    }
 
     expect(actual).toEqual(expected);
 });
@@ -276,16 +268,15 @@ test("get All Saints' Day", () => {
     ];
 
     const actual = []
+    for (year of years) {
+        actual.push(app.getAllSaintsDayDate(year));
+    }
     const expected = [
         new Date("1954-11-06"),
         new Date("2024-11-02"),
         new Date("2025-11-01"),
         new Date("2035-11-03")
     ];
-
-    for (year of years) {
-        actual.push(app.getAllSaintsDayDate(year));
-    }
 
     expect(actual).toEqual(expected);
 });
