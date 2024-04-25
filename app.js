@@ -194,8 +194,8 @@ function putHolidaysInClosedDays() {
     const currentYear = (new Date(Date.now())).getFullYear();
     const easter = getEasterDate(currentYear);
     const holidays = [
-        new Date(`${currentYear}-01-01`), // new year's day
-        new Date(`${currentYear}-01-06`), // epiphany
+        new Date(`${currentYear}-01-01`), // New Year's Day
+        new Date(`${currentYear}-01-06`), // Epiphany
         getGoodFridayDate(easter),
         getHolySaturdayDate(easter),
         easter,
@@ -210,7 +210,7 @@ function putHolidaysInClosedDays() {
         new Date(`${currentYear}-12-24`), // Christmas Eve
         new Date(`${currentYear}-12-25`), // Christmas
         new Date(`${currentYear}-12-26`), // Boxing Day
-        new Date(`${currentYear}-12-31`), // New year's eve
+        new Date(`${currentYear}-12-31`), // New Year's Eve
     ];
 
     let key = "";
