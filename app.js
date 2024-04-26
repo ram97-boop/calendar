@@ -181,6 +181,21 @@ function getPentecostSundayDate(easterDate) {
     return new Date(easterDate * 1 + (86400000 * 49));
 }
 
+function getMidsummerDate(year) {
+    let date = new Date(`${year}-06-20`);
+
+    for (let i = 0; i < 7; ++i) {
+        date = new Date(date * 1 + 86400000); // next day
+        if (date.getDay() === 6) { // if Saturday
+            return date;
+        }
+    }
+}
+
+function getMidsummersEveDate(midsummerDate) {
+    return new Date(midsummerDate * 1 - 86400000);
+}
+
 function getAllSaintsDayDate(year) {
     let date = new Date(`${year}-10-31`);
 
@@ -194,37 +209,43 @@ function getAllSaintsDayDate(year) {
 
 function putHolidaysInClosedDays() {
     const currentYear = (new Date(Date.now())).getFullYear();
-    const easter = getEasterDate(currentYear);
-    const holidays = [
-        new Date(`${currentYear}-01-01`), // New Year's Day
-        new Date(`${currentYear}-01-06`), // Epiphany
-        getGoodFridayDate(easter),
-        getHolySaturdayDate(easter),
-        easter,
-        getEasterMondayDate(easter),
-        new Date(`${currentYear}-05-01`), // 1st of May
-        getAscensionDayDate(easter),
-        getPentecostSundayDate(easter),
-        new Date(`${currentYear}-06-06`), // Sweden's national day
-        new Date(`${currentYear}-06-21`), // Midsummer's Eve
-        new Date(`${currentYear}-06-22`), // Midsummer
-        getAllSaintsDayDate(currentYear),
-        new Date(`${currentYear}-12-24`), // Christmas Eve
-        new Date(`${currentYear}-12-25`), // Christmas
-        new Date(`${currentYear}-12-26`), // Boxing Day
-        new Date(`${currentYear}-12-31`), // New Year's Eve
-    ];
+    const nextYear = currentYear + 1;
+    const years = [currentYear, nextYear];
 
-    let key = "";
-    let month = "";
-    for (holiday of holidays) {
-        month = (holiday.getMonth() + 1).toString().padStart(2, "0");
-        key = `${currentYear}-${month}`;
-        if (closedDays[key]) {
-            closedDays[key].push(holiday.getDate());
-        }
-        else {
-            closedDays[key] = [holiday.getDate()];
+    for (year of years) {
+        const easter = getEasterDate(year);
+        const midsummer = getMidsummerDate(year);
+        const holidays = [
+            new Date(`${year}-01-01`), // New Year's Day
+            new Date(`${year}-01-06`), // Epiphany
+            getGoodFridayDate(easter),
+            getHolySaturdayDate(easter),
+            easter,
+            getEasterMondayDate(easter),
+            new Date(`${year}-05-01`), // 1st of May
+            getAscensionDayDate(easter),
+            getPentecostSundayDate(easter),
+            new Date(`${year}-06-06`), // Sweden's national day
+            getMidsummersEveDate(midsummer),
+            midsummer,
+            getAllSaintsDayDate(year),
+            new Date(`${year}-12-24`), // Christmas Eve
+            new Date(`${year}-12-25`), // Christmas
+            new Date(`${year}-12-26`), // Boxing Day
+            new Date(`${year}-12-31`), // New Year's Eve
+        ];
+
+        let key = "";
+        let month = "";
+        for (holiday of holidays) {
+            month = (holiday.getMonth() + 1).toString().padStart(2, "0");
+            key = `${year}-${month}`;
+            if (closedDays[key]) {
+                closedDays[key].push(holiday.getDate());
+            }
+            else {
+                closedDays[key] = [holiday.getDate()];
+            }
         }
     }
 }
