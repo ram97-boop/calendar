@@ -209,8 +209,10 @@ function getAllSaintsDayDate(year) {
 
 function putHolidaysInClosedDays() {
     const currentYear = (new Date(Date.now())).getFullYear();
-    const nextYear = currentYear + 1;
-    const years = [currentYear, nextYear];
+    const years = [
+        currentYear,
+        currentYear + 1 // next year
+    ];
 
     for (year of years) {
         const easter = getEasterDate(year);
