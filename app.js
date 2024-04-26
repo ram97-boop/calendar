@@ -82,7 +82,8 @@ function printDates() {
         datesContainer.appendChild(date);
     }
 
-    setFullDays(fullDays, monthOnDisplay);
+    setUnavailableDays(fullDays, monthOnDisplay, "full");
+    setUnavailableDays(closedDays, monthOnDisplay, "blocked");
 }
 
 function makeButtonsChangeMonth() {
@@ -115,21 +116,22 @@ function addEventListenerForFullDaysMessage() {
     window.addEventListener("message", (event) => {
         console.log("message received");
         fullDays = event.data;
-        setFullDays(fullDays, monthOnDisplay);
+        setUnavailableDays(fullDays, monthOnDisplay, "full");
+        setUnavailableDays(closedDays, monthOnDisplay, "blocked");
     });
 }
 
-function setFullDays(fullDays, yearAndMonth) {
+function setUnavailableDays(dates, yearAndMonth, classAttribute) {
     const yearAndMonthString = getYearMonthString(yearAndMonth);
 
-    if (yearAndMonthString in fullDays) {
+    if (yearAndMonthString in dates) {
         const whitespaceOffset = getThisMonthFirstDay();
 
-        for (const day of fullDays[yearAndMonthString]) {
+        for (const day of dates[yearAndMonthString]) {
             const date = document.querySelector(
                 `#days-of-month p:nth-child(${day + whitespaceOffset})`
             );
-            date.classList.add("full");
+            date.classList.add(classAttribute);
         }
     }
 }
@@ -227,6 +229,7 @@ function putHolidaysInClosedDays() {
     }
 }
 
+putHolidaysInClosedDays()
 printMonthAndYear(new Date()); // print today's month and year.
 printDates();
 makeButtonsChangeMonth();

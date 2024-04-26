@@ -140,9 +140,9 @@ body {
     cursor: default;
 }
 
-.blocked,
+#days-of-month p.blocked,
 #days-of-month > p:nth-child(7n) {
-    background-color: grey;
+    background-color: var(--closed-day-color);
     color: white;
     filter: none;
     cursor: default;
