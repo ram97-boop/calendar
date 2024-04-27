@@ -119,7 +119,7 @@ body {
     background-color: var(--available-day-color);
 }
 
-#days-of-month p:hover {
+/* #days-of-month p:hover {
     filter: brightness(0.9);
     cursor: pointer;
 }
@@ -132,7 +132,7 @@ body {
 #days-of-month p:empty {
     filter: none;
     cursor: default;
-}
+} */
 
 #days-of-month p.full {
     background-color: var(--full-day-color);
