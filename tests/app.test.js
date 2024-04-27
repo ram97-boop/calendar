@@ -259,6 +259,54 @@ test("get Pentecost Sunday from Easter date", () => {
     expect(actual).toEqual(expected);
 });
 
+test("get Midsummer date", () => {
+    const years = [
+        "1943",
+        "1961",
+        "2024",
+        "2025",
+        "2035"
+    ];
+
+    const actual = [];
+    for (year of years) {
+        actual.push(app.getMidsummerDate(year));
+    }
+    const expected = [
+        new Date("1943-06-26"),
+        new Date("1961-06-24"),
+        new Date("2024-06-22"),
+        new Date("2025-06-21"),
+        new Date("2035-06-23"),
+    ];
+
+    expect(actual).toEqual(expected);
+});
+
+test("get Midsummer's Eve from Midsummer date", () => {
+    const midsummers = [
+        new Date("1943-06-26"),
+        new Date("1961-06-24"),
+        new Date("2024-06-22"),
+        new Date("2025-06-21"),
+        new Date("2035-06-23"),
+    ];
+
+    const actual = [];
+    for (midsummer of midsummers) {
+        actual.push(app.getMidsummersEveDate(midsummer));
+    }
+    const expected = [
+        new Date("1943-06-25"),
+        new Date("1961-06-23"),
+        new Date("2024-06-21"),
+        new Date("2025-06-20"),
+        new Date("2035-06-22"),
+    ];
+
+    expect(actual).toEqual(expected);
+});
+
 test("get All Saints' Day", () => {
     const years = [
         "1954",

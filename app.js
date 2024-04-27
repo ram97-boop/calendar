@@ -273,6 +273,8 @@ module.exports = {
     getEasterMondayDate,
     getAscensionDayDate,
     getPentecostSundayDate,
+    getMidsummerDate,
+    getMidsummersEveDate,
     getAllSaintsDayDate,
     putHolidaysInClosedDays,
 }
