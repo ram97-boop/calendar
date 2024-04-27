@@ -14,7 +14,9 @@ const monthStrings = [
 ];
 let monthOnDisplay;
 let fullDays = {};
-let closedDays = {};
+let closedDays = {
+    "2024-04": [2],
+};
 
 // for leap days
 function updateFebruaryNrOfDays(date) {
