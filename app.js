@@ -17,6 +17,10 @@ let fullDays = {};
 let closedDays = {
     "2024-04": [2],
 };
+let unclosedDays = {
+    "2024-04": [1], // open during 2024's Easter Monday
+    "2024-12": [24, 25]
+};
 
 // for leap days
 function updateFebruaryNrOfDays(date) {
@@ -244,17 +248,21 @@ function putHolidaysInClosedDays() {
         for (holiday of holidays) {
             month = (holiday.getMonth() + 1).toString().padStart(2, "0");
             key = `${year}-${month}`;
-            if (closedDays[key]) {
-                closedDays[key].push(holiday.getDate());
-            }
-            else {
-                closedDays[key] = [holiday.getDate()];
+            if (!(unclosedDays[key] &&
+                unclosedDays[key].includes(holiday.getDate()))
+            ) {
+                if (closedDays[key]) {
+                    closedDays[key].push(holiday.getDate());
+                }
+                else {
+                    closedDays[key] = [holiday.getDate()];
+                }
             }
         }
     }
 }
 
-putHolidaysInClosedDays()
+putHolidaysInClosedDays();
 printMonthAndYear(new Date()); // print today's month and year.
 printDates();
 makeButtonsChangeMonth();
