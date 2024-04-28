@@ -45,7 +45,12 @@ function getThisMonthFirstDay() {
 }
 
 function incrementMonth(date) {
-    date.setMonth(date.getMonth() + 1);
+    const limit = new Date();
+    limit.setFullYear(limit.getFullYear() + 1);
+    if (date.getFullYear() < limit.getFullYear()
+        || date.getMonth() < limit.getMonth()) {
+        date.setMonth(date.getMonth() + 1);
+    }
 }
 
 function decrementMonth(date) {
