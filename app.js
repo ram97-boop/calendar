@@ -253,8 +253,8 @@ function putHolidaysInClosedDays() {
         for (holiday of holidays) {
             month = (holiday.getMonth() + 1).toString().padStart(2, "0");
             key = `${year}-${month}`;
-            if (!(unclosedDays[key] &&
-                unclosedDays[key].includes(holiday.getDate()))
+            if (!(unclosedDays[key]
+                && unclosedDays[key].includes(holiday.getDate()))
             ) {
                 if (closedDays[key]) {
                     closedDays[key].push(holiday.getDate());
