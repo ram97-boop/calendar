@@ -128,7 +128,7 @@ function addEventListenerForFullDaysMessage() {
         console.log("message received");
         fullDays = event.data;
         setUnavailableDays(fullDays, monthOnDisplay, "full");
-        setUnavailableDays(closedDays, monthOnDisplay, "blocked");
+        // setUnavailableDays(closedDays, monthOnDisplay, "blocked");
     });
 }
 
