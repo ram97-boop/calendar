@@ -19,7 +19,7 @@ body {
 
 #color-codes {
     display: flex;
-    gap: 30px;
+    gap: 1em;
     align-items: center;
     padding: 10px 0 10px 10px;
     background-color: var(--primary-color);
@@ -29,18 +29,19 @@ body {
 #color-codes>div {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
 }
 
 #color-codes p {
-    font-size: 12px;
+    font-size: 60%;
 }
 
-#color-codes>div>span {
+#color-codes div>span {
     display:inline-block;
     height: 1em;
     width: 1em;
     border: 1px solid black;
+    flex: 0 0 auto;
 }
 
 #color-codes #full>span {
