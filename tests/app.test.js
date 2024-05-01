@@ -40,6 +40,18 @@ test("increment year when incrementing December month", () => {
     expect(actual).toBe(expected);
 });
 
+test("don't increment month if month on display is 1 year from now", () => {
+    jest.useFakeTimers().setSystemTime(new Date("2024-05-01"));
+    const date = new Date("2025-05-01");
+
+    app.incrementMonth(date);
+
+    const actual = date.toISOString();
+    const expected = "2025-05-01T00:00:00.000Z";
+
+    expect(actual).toBe(expected);
+});
+
 test("decrement date's month by 1", () => {
     const date = new Date("2024-06-29");
 
