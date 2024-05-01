@@ -118,6 +118,15 @@ function makeButtonsChangeMonth() {
     });
 }
 
+function makeTodayButtonReturnToToday() {
+    const button = document.getElementById("today-button");
+
+    button.addEventListener("click", () => {
+        printMonthAndYear(new Date()); // today
+        printDates();
+    });
+}
+
 function getYearMonthString(date) {
     const isoMonth = (date.getMonth() + 1).toString().padStart(2, "0");
     return `${date.getFullYear()}-${isoMonth}`;
@@ -271,6 +280,7 @@ putHolidaysInClosedDays();
 printMonthAndYear(new Date()); // print today's month and year.
 printDates();
 makeButtonsChangeMonth();
+makeTodayButtonReturnToToday();
 addEventListenerForFullDaysMessage();
 
 module.exports = {
