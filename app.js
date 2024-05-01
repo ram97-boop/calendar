@@ -15,11 +15,11 @@ const monthStrings = [
 let monthOnDisplay;
 let fullDays = {};
 let closedDays = {
-    "2024-04": [2],
+    // "2024-04": [2],
 };
 let unclosedDays = {
-    "2024-04": [1], // open during 2024's Easter Monday
-    "2024-12": [24, 25]
+    // "2024-04": [1], // open during 2024's Easter Monday
+    // "2024-12": [24, 25]
 };
 
 // for leap days
