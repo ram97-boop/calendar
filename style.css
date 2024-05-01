@@ -17,13 +17,20 @@ body {
     background-color: white;
 }
 
-#color-codes {
-    display: flex;
-    gap: 1em;
-    align-items: center;
-    padding: 10px 0 10px 10px;
+#calendar-header {
     background-color: var(--primary-color);
     border: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 2em;
+    justify-content: space-between;
+}
+
+#color-codes {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px 0 10px 10px;
 }
 
 #color-codes>div {
@@ -56,6 +63,20 @@ body {
     background-color: var(--closed-day-color);
 }
 
+#today {
+    flex: 1 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#today-button {
+    background-color: var(--tertiary-color);
+    padding: 20px 35px;
+    margin: 0 10px 0 0;
+    border: 1px solid var(--closed-day-color);
+}
+
 #calendar-container {
     flex: 1 1 auto;
     border: 1px solid black;
@@ -77,11 +98,13 @@ body {
     border: none;
 }
 
+#today-button:hover,
 #month-interface button:hover {
     filter: brightness(1.1);
     cursor: pointer;
 }
 
+#today-button:active,
 #month-interface button:active {
     filter: brightness(0.8);
     cursor: grabbing;
