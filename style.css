@@ -18,7 +18,7 @@ body {
 }
 
 #calendar-header {
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
     border: 1px solid black;
     display: flex;
     flex-wrap: wrap;
@@ -71,7 +71,7 @@ body {
 }
 
 #today-button {
-    background-color: var(--tertiary-color);
+    background-color: var(--primary-color);
     padding: 20px 35px;
     margin: 0 10px 0 0;
     border: 1px solid var(--closed-day-color);
