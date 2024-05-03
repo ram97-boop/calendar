@@ -51,7 +51,10 @@ function incrementMonth(date) {
     if (date.getFullYear() < limit.getFullYear()
         || date.getMonth() < limit.getMonth()) {
         date.setMonth(date.getMonth() + 1);
+        return true;
     }
+
+    return false;
 }
 
 function decrementMonth(date) {
@@ -113,9 +116,10 @@ function makeButtonsChangeMonth() {
     });
 
     rightButton.addEventListener("click", () => {
-        incrementMonth(monthOnDisplay);
-        printMonthAndYear(monthOnDisplay);
-        printDates();
+        if (incrementMonth(monthOnDisplay)) {
+            printMonthAndYear(monthOnDisplay);
+            printDates();
+        }
     });
 }
 
