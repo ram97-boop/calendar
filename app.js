@@ -15,7 +15,7 @@ const monthStrings = [
 let monthOnDisplay;
 let fullDays = {};
 let closedDays = {
-    // "2024-04": [2],
+    "2024-05": [2],
 };
 let unclosedDays = {
     // "2024-04": [1], // open during 2024's Easter Monday
@@ -227,12 +227,13 @@ function getAllSaintsDayDate(year) {
     }
 }
 
-function putHolidaysInClosedDays() {
+function getThisAndNextYearsHolidays(closedDays) {
     const currentYear = (new Date(Date.now())).getFullYear();
     const years = [
         currentYear,
         currentYear + 1 // next year
     ];
+    const holidaysObject = JSON.parse(JSON.stringify(closedDays));
 
     for (year of years) {
         const easter = getEasterDate(year);
@@ -265,18 +266,20 @@ function putHolidaysInClosedDays() {
             if (!(unclosedDays[key]
                 && unclosedDays[key].includes(holiday.getDate()))
             ) {
-                if (closedDays[key]) {
-                    closedDays[key].push(holiday.getDate());
+                if (holidaysObject[key]) {
+                    holidaysObject[key].push(holiday.getDate());
                 }
                 else {
-                    closedDays[key] = [holiday.getDate()];
+                    holidaysObject[key] = [holiday.getDate()];
                 }
             }
         }
     }
+
+    return holidaysObject;
 }
 
-putHolidaysInClosedDays();
+closedDays = getThisAndNextYearsHolidays(closedDays);
 printMonthAndYear(new Date()); // print today's month and year.
 printDates();
 makeButtonsChangeMonth();
@@ -301,5 +304,5 @@ module.exports = {
     getMidsummerDate,
     getMidsummersEveDate,
     getAllSaintsDayDate,
-    putHolidaysInClosedDays,
+    getThisAndNextYearsHolidays
 }
