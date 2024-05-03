@@ -80,7 +80,7 @@ test("get 29 days for February in leap year", () => {
 
     app.getMonthAndYearToday(new Date);
 
-    const actual = app.monthStrings[1][1];
+    const actual = app.monthStringsAndNrOfDays[1][1];
     const expected = 29;
 
     expect(actual).toBe(expected);

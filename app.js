@@ -1,4 +1,4 @@
-const monthStrings = [
+const monthStringsAndNrOfDays = [
     ["Januari", 31],
     ["Februari", 0],
     ["Mars", 31],
@@ -28,14 +28,15 @@ function updateFebruaryNrOfDays(date) {
         const febLastDay = new Date(date);
         febLastDay.setMonth(2);
         febLastDay.setDate(0);
-        monthStrings[1][1] = febLastDay.getDate();
+        monthStringsAndNrOfDays[1][1] = febLastDay.getDate();
     }
 }
 
 function getMonthAndYearToday(today) {
     monthOnDisplay = new Date(today);
     updateFebruaryNrOfDays(today);
-    return `${monthStrings[today.getMonth()][0]} ${today.getFullYear()}`;
+    const monthString = monthStringsAndNrOfDays[today.getMonth()][0];
+    return `${monthString} ${today.getFullYear()}`;
 }
 
 function getThisMonthFirstDay() {
@@ -78,7 +79,7 @@ function printWhitespaceDates(datesContainer) {
 
 function printDates() {
     const datesContainer = document.getElementById("days-of-month");
-    const nrOfDays = monthStrings[monthOnDisplay.getMonth()][1];
+    const nrOfDays = monthStringsAndNrOfDays[monthOnDisplay.getMonth()][1];
 
     // clear previously printed dates.
     while (datesContainer.lastChild) {
@@ -287,7 +288,7 @@ makeTodayButtonReturnToToday();
 addEventListenerForFullDaysMessage();
 
 module.exports = {
-    monthStrings,
+    monthStringsAndNrOfDays,
     closedDays,
     getMonthAndYearToday,
     getThisMonthFirstDay,
