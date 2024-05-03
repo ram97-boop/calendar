@@ -23,7 +23,7 @@ let unclosedDays = {
 };
 
 // for leap days
-function updateFebruaryNrOfDays(date) {
+function updateFebruaryNrOfDays(date, monthStringsAndNrOfDays) {
     if (date.getMonth() === 1) {
         const febLastDay = new Date(date);
         febLastDay.setMonth(2);
@@ -34,7 +34,7 @@ function updateFebruaryNrOfDays(date) {
 
 function getMonthAndYear(date) {
     monthOnDisplay = new Date(date);
-    updateFebruaryNrOfDays(date);
+    updateFebruaryNrOfDays(date, monthStringsAndNrOfDays);
     const monthString = monthStringsAndNrOfDays[date.getMonth()][0];
     return `${monthString} ${date.getFullYear()}`;
 }
@@ -294,7 +294,6 @@ module.exports = {
     getThisMonthFirstDay,
     incrementMonth,
     decrementMonth,
-    updateFebruaryNrOfDays,
     getYearMonthString,
     getEasterDate,
     getGoodFridayDate,
