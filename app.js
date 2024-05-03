@@ -60,7 +60,10 @@ function decrementMonth(date) {
     if (datesMonth > today.getMonth()
         || date.getFullYear() > today.getFullYear()) {
         date.setMonth(datesMonth - 1);
+        return true;
     }
+
+    return false;
 }
 
 function printMonthAndYear(date) {
@@ -103,10 +106,7 @@ function makeButtonsChangeMonth() {
     const rightButton = document.getElementById("next-month");
 
     leftButton.addEventListener("click", () => {
-        const today = new Date();
-        if (monthOnDisplay.getMonth() > today.getMonth()
-            || monthOnDisplay.getFullYear() > today.getFullYear()) {
-            decrementMonth(monthOnDisplay);
+        if (decrementMonth(monthOnDisplay)) {
             printMonthAndYear(monthOnDisplay); // monthOnDisplay is decremented
             printDates();
         }

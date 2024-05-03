@@ -67,11 +67,12 @@ test("don't decrement month if it's today's month", () => {
     jest.useFakeTimers().setSystemTime(new Date("2024-03-29"));
     const date = new Date("2024-03-29");
 
-    app.decrementMonth(date);
+    const hasDecremented = app.decrementMonth(date);
 
     const actual = date.getMonth();
     const expected = 2;
 
+    expect(hasDecremented).toBe(false);
     expect(actual).toBe(expected);
 });
 
