@@ -364,3 +364,31 @@ test("set holidays as closed days", () => {
     expect(actual).toEqual(expected);
 });
 
+test("setting holidays preserves manually inserted closed days", () => {
+    jest.useFakeTimers().setSystemTime(new Date("2024-05-03"));
+
+    const closedDays = {
+        "2024-05": [2, 3],
+        "2024-11": [14]
+    };
+
+    const actual = app.getThisAndNextYearsHolidays(closedDays);
+    const expected = {
+        "2024-01": [1, 6],
+        "2024-03": [29, 30, 31],
+        "2024-04": [1],
+        "2024-05": [2, 3, 1, 9, 19],
+        "2024-06": [6, 21, 22],
+        "2024-11": [14, 2],
+        "2024-12": [24, 25, 26, 31],
+        "2025-01": [1, 6],
+        "2025-04": [18, 19, 20, 21],
+        "2025-05": [1, 29],
+        "2025-06": [8, 6, 20, 21],
+        "2025-11": [1],
+        "2025-12": [24, 25, 26, 31],
+
+    };
+
+    expect(actual).toEqual(expected);
+});
