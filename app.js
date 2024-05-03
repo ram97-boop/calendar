@@ -32,11 +32,11 @@ function updateFebruaryNrOfDays(date) {
     }
 }
 
-function getMonthAndYearToday(today) {
-    monthOnDisplay = new Date(today);
-    updateFebruaryNrOfDays(today);
-    const monthString = monthStringsAndNrOfDays[today.getMonth()][0];
-    return `${monthString} ${today.getFullYear()}`;
+function getMonthAndYear(date) {
+    monthOnDisplay = new Date(date);
+    updateFebruaryNrOfDays(date);
+    const monthString = monthStringsAndNrOfDays[date.getMonth()][0];
+    return `${monthString} ${date.getFullYear()}`;
 }
 
 function getThisMonthFirstDay() {
@@ -65,7 +65,7 @@ function decrementMonth(date) {
 
 function printMonthAndYear(date) {
     const p = document.getElementById("month-and-year");
-    p.textContent = getMonthAndYearToday(date);
+    p.textContent = getMonthAndYear(date);
 }
 
 function printWhitespaceDates(datesContainer) {
@@ -290,7 +290,7 @@ addEventListenerForFullDaysMessage();
 module.exports = {
     monthStringsAndNrOfDays,
     closedDays,
-    getMonthAndYearToday,
+    getMonthAndYear,
     getThisMonthFirstDay,
     incrementMonth,
     decrementMonth,
