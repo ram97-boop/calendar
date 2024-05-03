@@ -344,7 +344,7 @@ test("get All Saints' Day", () => {
 test("set holidays as closed days", () => {
     jest.useFakeTimers().setSystemTime(new Date("2024-04-25"));
 
-    const actual = app.getThisAndNextYearsHolidays({});
+    const actual = app.getThisAndNextYearsHolidays({}, {});
     const expected = {
         "2024-01": [1, 6],
         "2024-03": [29, 30, 31],
@@ -372,7 +372,7 @@ test("setting holidays preserves manually inserted closed days", () => {
         "2024-11": [14]
     };
 
-    const actual = app.getThisAndNextYearsHolidays(closedDays);
+    const actual = app.getThisAndNextYearsHolidays(closedDays, {});
     const expected = {
         "2024-01": [1, 6],
         "2024-03": [29, 30, 31],

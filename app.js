@@ -18,8 +18,8 @@ let closedDays = {
     "2024-05": [2],
 };
 let unclosedDays = {
-    // "2024-04": [1], // open during 2024's Easter Monday
-    // "2024-12": [24, 25]
+    "2024-04": [1], // open during 2024's Easter Monday
+    "2024-12": [24, 25]
 };
 
 // for leap days
@@ -227,7 +227,7 @@ function getAllSaintsDayDate(year) {
     }
 }
 
-function getThisAndNextYearsHolidays(closedDays) {
+function getThisAndNextYearsHolidays(closedDays, openDays) {
     const currentYear = (new Date(Date.now())).getFullYear();
     const years = [
         currentYear,
@@ -263,8 +263,8 @@ function getThisAndNextYearsHolidays(closedDays) {
         for (holiday of holidays) {
             month = (holiday.getMonth() + 1).toString().padStart(2, "0");
             key = `${year}-${month}`;
-            if (!(unclosedDays[key]
-                && unclosedDays[key].includes(holiday.getDate()))
+            if (!(openDays[key]
+                && openDays[key].includes(holiday.getDate()))
             ) {
                 if (holidaysObject[key]) {
                     holidaysObject[key].push(holiday.getDate());
@@ -279,7 +279,7 @@ function getThisAndNextYearsHolidays(closedDays) {
     return holidaysObject;
 }
 
-closedDays = getThisAndNextYearsHolidays(closedDays);
+closedDays = getThisAndNextYearsHolidays(closedDays, unclosedDays);
 printMonthAndYear(new Date()); // print today's month and year.
 printDates();
 makeButtonsChangeMonth();
